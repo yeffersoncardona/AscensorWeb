@@ -1,0 +1,14 @@
+﻿@page
+@model webAscensor.Pages.AscensorModel
+@{
+    ViewData["Title"] = "Página de Ascensor";
+}
+<p>Estado Actual: @(Model.Status.IsMoving ? "En movimiento" : "Detenido") en el piso @Model.Status.CurrentFloor</p> 
+<p>Puertas: @(Model.Status.DoorsOpen ? "Abiertas" : "Cerradas")</p>
+<form method="post">
+    <button asp-page-handler="CallElevator" style="" asp-route-floor="3" class="btn btn-success">Llamar al Ascensor al Piso 3</button>
+    <button asp-page-handler="OpenDoors" class="btn btn-success">Abrir Puertas</button>
+    <button asp-page-handler="CloseDoors" class="btn btn-success">Cerrar Puertas</button>
+    <button asp-page-handler="StartElevator" class="btn btn-success">Iniciar Ascensor</button>
+    <button asp-page-handler="StopElevator" class="btn btn-danger">Detener Ascensor</button>
+</form>
